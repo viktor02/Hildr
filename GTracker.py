@@ -1,5 +1,7 @@
-import configparser
 import psutil
+import sqlite3
+
+import Database
 
 
 class GTracker:
@@ -22,9 +24,10 @@ class GTracker:
 
     @staticmethod
     def get_games():
-        """ Get games """
+        """ Get games list """
         g = open('games.txt', 'r')
         lines = g.readlines()
+        lines = list(map(str.strip, lines))
         return lines
 
     def found_target(self):
@@ -38,25 +41,14 @@ class GTracker:
                 self.game = process.name()
                 return process
 
-    @staticmethod
-    def get_results(game):
-        game_results = configparser.ConfigParser()
-        game_results.read("config.ini")
-        return game_results.get(game, "timer")
-
     def save_result(self):
-        """ Save timings in file """
-        game_results = configparser.ConfigParser()
+        """ Save timings in database """
 
-        game_results.read("config.ini")
+        db = Database.Connector("GTracker.db")
 
-        if game_results.has_section(self.game):
-            old_res = game_results.getfloat(self.game, "timer")
-            new_res = old_res + self.timer
-            game_results.set(self.game, "timer", str(new_res))
-        else:
-            game_results.add_section(self.game)
-            game_results.set(self.game, "timer", str(self.timer))
+        db.create_table()
 
-        with open('config.ini', 'w') as configfile:
-            game_results.write(configfile)
+        db.fill_table(self.timer)
+
+        db.commit()
+        db.close()

@@ -1,1 +1,2 @@
 witcher3.exe
+witcher2.exe
