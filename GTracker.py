@@ -1,5 +1,4 @@
 import psutil
-import sqlite3
 
 import Database
 

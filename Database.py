@@ -8,9 +8,6 @@ class Connector:
         self.connection = sqlite3.connect(database_name)
         self.cur = self.connection.cursor()
 
-    # def __enter__(self):
-    #     return self.cur
-
     def __exit__(self, ext_type, exc_value, traceback):
         self.cur.close()
         if isinstance(exc_value, Exception):
