@@ -8,7 +8,7 @@ config = configparser.ConfigParser()
 config.read('config.ini')
 
 # Process verification period
-wait_time = int(config['settings']['wait_time'])
+wait_time = config.getint('settings', 'wait_time')
 
 tracker = GTracker.GTracker()
 
@@ -23,8 +23,8 @@ while True:
     print("Target found is {}".format(tracker.game))
 
     while target.is_running():
-        tracker.timer += time.time() - target.create_time()
         sleep(wait_time)
+    tracker.timer += time.time() - target.create_time()
 
     print("{} was launched for {:.2f} seconds".format(tracker.game, tracker.timer))
     tracker.save_result()
