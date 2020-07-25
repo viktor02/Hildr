@@ -26,7 +26,7 @@ class GTracker:
         """ Get games list """
         g = open('games.txt', 'r')
         lines = g.readlines()
-        lines = list(map(str.strip, lines))
+        lines = list(map(str.strip, lines))  # remove \r \n from lines
         return lines
 
     def found_target(self):
@@ -35,8 +35,10 @@ class GTracker:
 
         processes = psutil.process_iter(['name', 'create_time'])
 
+        games = self.get_games()
+
         for process in processes:
-            if process.name() in self.get_games():
+            if process.name() in games:
                 self.game = process.name()
                 return process
 
