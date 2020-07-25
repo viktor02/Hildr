@@ -1,7 +1,7 @@
 import configparser
 from time import sleep
-import datetime
-import time;
+
+import time
 import GTracker
 
 config = configparser.ConfigParser()
@@ -23,7 +23,6 @@ while True:
     print("Target found is {}".format(tracker.game))
 
     while target.is_running():
-        # tracker.timer += wait_time
         tracker.timer += time.time() - target.create_time()
         sleep(wait_time)
 
