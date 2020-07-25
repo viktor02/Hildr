@@ -50,15 +50,14 @@ class GTracker:
         game_results = configparser.ConfigParser()
 
         game_results.read("config.ini")
-        old_res = int(game_results.get(self.game, "timer"))
-        new_res = old_res + self.timer
 
-        try:
-            game_results.add_section(self.game)
-        except configparser.DuplicateSectionError:
-            pass
-        finally:
+        if game_results.has_section(self.game):
+            old_res = game_results.getfloat(self.game, "timer")
+            new_res = old_res + self.timer
             game_results.set(self.game, "timer", str(new_res))
+        else:
+            game_results.add_section(self.game)
+            game_results.set(self.game, "timer", str(self.timer))
 
         with open('config.ini', 'w') as configfile:
             game_results.write(configfile)
