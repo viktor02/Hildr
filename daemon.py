@@ -1,7 +1,7 @@
 import configparser
 from time import sleep
 
-import GTracker
+from GTracker import GTracker
 
 config = configparser.ConfigParser()
 config.read('config.ini')

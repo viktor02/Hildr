@@ -24,18 +24,18 @@ class Connector:
         """execute a row of data to current cursor"""
         self.cur.execute(new_data)
 
-    def fill_table(self, timer):
+    def fill_table(self, timer, game):
         """execute a row of data to current cursor"""
         unix_time = time.time()
-        self.cur.execute('INSERT INTO result VALUES (?, ?);', (unix_time, timer))
+        self.cur.execute('INSERT INTO result VALUES (?, ?, ?);', (unix_time, timer, game))
 
     def get_last_result(self):
         """execute a row of data to current cursor"""
-        return self.cur.execute('ELECT * FROM result ORDER BY date DESC LIMIT 1;')
+        return self.cur.execute('SELECT * FROM result ORDER BY date DESC LIMIT 1;')
 
     def create_table(self):
         """create a database table if it does not exist already"""
-        self.cur.execute('''CREATE TABLE IF NOT EXISTS result("date" INTEGER, "timer" INTEGER);''')
+        self.cur.execute('''CREATE TABLE IF NOT EXISTS result("date" INTEGER, "timer" INTEGER, "game" TEXT);''')
 
     def commit(self):
         """commit changes to database"""
