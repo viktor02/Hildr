@@ -8,8 +8,10 @@ config.read('config.ini')
 
 # Process verification period
 wait_time = config.getint('settings', 'wait_time')
+path_to_db = config.get('settings', 'path_to_db')
+path_to_games = config.get('settings', 'path_to_games')
 
-tracker = GTracker.GTracker()
+tracker = GTracker.GTracker(path_to_db, path_to_games)
 
 print(tracker.welcome())
 while True:

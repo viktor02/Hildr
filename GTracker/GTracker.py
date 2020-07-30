@@ -1,14 +1,15 @@
 import os
-
 import psutil
 
 from GTracker import Database
 
 
 class GTracker:
-    def __init__(self):
+    def __init__(self, path_to_db='GTracker.db', path_to_games='games.txt'):
         self.game = None
         self.timer = 0
+        self.path_to_games = path_to_games
+        self.path_to_db = path_to_db
 
     @staticmethod
     def welcome():
@@ -23,10 +24,9 @@ class GTracker:
                                                      )
         return welcome_message
 
-    @staticmethod
-    def get_games():
+    def get_games(self):
         """ Get games list """
-        games_path = os.path.dirname(__file__) + '/../games.txt'
+        games_path = self.path_to_games
         g = open(games_path, 'r')
         lines = g.readlines()
         lines = list(map(str.strip, lines))  # remove \r \n from lines
@@ -48,7 +48,7 @@ class GTracker:
     def save_result(self):
         """ Save timings in database """
 
-        db = Database.Connector("GTracker.db")
+        db = Database.Connector(self.path_to_db)
 
         db.create_table()
 
