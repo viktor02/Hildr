@@ -1,6 +1,10 @@
 import cx_Freeze
 
-exe = [cx_Freeze.Executable("daemon.py", base = "Win32GUI")]
+exe = [cx_Freeze.Executable("daemon.py", 
+                            base = "Win32GUI",
+                            targetName = "GTracker",
+                            shortcutName = "GTracker",
+                            copyright = "Viktor Karpov")]
 
 cx_Freeze.setup(
     name = "GTracker",
