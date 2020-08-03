@@ -1,7 +1,12 @@
 import configparser
 from time import sleep
 
+from colorama import Fore, init
+
 from GTracker import GTracker
+
+# Init colorama
+init()
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -13,7 +18,9 @@ path_to_games = config.get('settings', 'path_to_games')
 
 tracker = GTracker.GTracker(path_to_db, path_to_games)
 
+print(Fore.MAGENTA)
 print(tracker.welcome())
+print(Fore.RESET)
 while True:
     while tracker.found_target() is None:
         print("Target not found. Waiting.")
@@ -21,6 +28,7 @@ while True:
 
     target = tracker.found_target()
 
+    print(Fore.GREEN)
     print("Target found is {}".format(tracker.game))
 
     while target.is_running():
@@ -31,6 +39,7 @@ while True:
     # May give bugs with fantastic values
 
     print("{} was launched for {:.2f} seconds".format(tracker.game, tracker.timer))
+    print(Fore.RESET)
     tracker.save_result()
 
     # Reset timer and target for next game
