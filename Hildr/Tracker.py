@@ -1,11 +1,10 @@
-import os
 import psutil
 
-from GTracker import Database
+from Hildr import Database
 
 
-class GTracker:
-    def __init__(self, path_to_db='GTracker.db', path_to_games='games.txt'):
+class Tracker:
+    def __init__(self, path_to_db='Hildr.db', path_to_games='games.txt'):
         self.game = None
         self.timer = 0
         self.path_to_games = path_to_games

@@ -3,7 +3,7 @@ from time import sleep
 
 from colorama import Fore, init
 
-from GTracker import GTracker
+from Hildr import Tracker
 
 # Init colorama
 init()
@@ -16,7 +16,7 @@ wait_time = config.getint('settings', 'wait_time')
 path_to_db = config.get('settings', 'path_to_db')
 path_to_games = config.get('settings', 'path_to_games')
 
-tracker = GTracker.GTracker(path_to_db, path_to_games)
+tracker = Tracker.Tracker(path_to_db, path_to_games)
 
 print(Fore.MAGENTA)
 print(tracker.welcome())
