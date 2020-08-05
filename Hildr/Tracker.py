@@ -13,7 +13,9 @@ class Tracker:
     @staticmethod
     def welcome():
         """ Welcome message """
-        welcome_message = "Hello, {}\n" \
+        welcome_message = "Hildr - tracker of your time spent \n" \
+                          "================================== \n" \
+                          "Hello, {}\n" \
                           "CPU: {}/{}\n" \
                           "Mem: {}% used\n\n" \
                           "Ready for game!\n".format(psutil.Process().as_dict(attrs=['username'])['username'],

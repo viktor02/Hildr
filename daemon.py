@@ -18,6 +18,7 @@ path_to_games = config.get('settings', 'path_to_games')
 
 tracker = Tracker.Tracker(path_to_db, path_to_games)
 
+
 print(Fore.MAGENTA)
 print(tracker.welcome())
 print(Fore.RESET)

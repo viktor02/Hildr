@@ -1,4 +1,4 @@
 build/
 dist/
-GTracker.db
-GTracker/__pycache__/
+Hildr.db
+Hildr/__pycache__/
