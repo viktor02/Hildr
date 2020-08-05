@@ -1,20 +1,20 @@
-# GTracker
+# Hildr
 
-GTracker is a tracker of your time spent playing games.
+Hildr is a tracker of your time spent playing games.
 
 ![](img/hello.png)
 
 ## How its work
 
-GTracker checks if a process from the list is running, 
+Hildr checks if a process from the list is running, 
 and if it finds one, it records the time.
 
 ## How to install
 
 #### I have Windows, what to do
-Ready to run executables [here](https://github.com/viktor02/GTracker/releases/latest)
+Ready to run executables [here](https://github.com/viktor02/Hildr/releases/latest)
 
-It is assumed that you add GTracker to startup - in this case, you need to download the no-console version and add the exe file to startup. Also, do not forget to add the file name of your game to the text file with games (`games.txt`)
+It is assumed that you add Hildr to startup - in this case, you need to download the no-console version and add the exe file to startup. Also, do not forget to add the file name of your game to the text file with games (`games.txt`)
 
 For example, if you are playing in Kingdom Come: Deliverance, so you need to add the line `KingdomCome.exe` to the `games.txt` file
 

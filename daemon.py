@@ -36,9 +36,6 @@ while True:
         tracker.timer += wait_time
         sleep(wait_time)
 
-    # tracker.timer += time.time() - target.create_time()
-    # May give bugs with fantastic values
-
     print("{} was launched for {:.2f} seconds".format(tracker.game, tracker.timer))
     print(Fore.RESET)
     tracker.save_result()
